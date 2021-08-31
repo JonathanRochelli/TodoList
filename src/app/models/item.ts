@@ -4,14 +4,14 @@ export interface Item {
     state : State
 }
 
-enum Priority {
-    "Hight" = 2,
-    "Medium" = 1,
-    "Low" = 0
+export enum Priority {
+    "Hight" = "2",
+    "Medium" = "1",
+    "Low" = "0"
 }
 
-enum State {
-    "Finished",
-    "Not started",
-    "To do"
+export enum State {
+    "To do" = "2",
+    "In progress" = "1",
+    "Finished" = "0"
 }
