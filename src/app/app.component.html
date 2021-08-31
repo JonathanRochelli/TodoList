@@ -3,3 +3,55 @@
     <span class="navbar-brand mb-0 h1">{{title}}</span>
   </div>
 </nav>
+<div class="container mt-3">
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#newItem" aria-expanded="false" aria-controls="newItem">
+    Add new item
+  </button>
+  <form class="collapse mt-2" id="newItem" [formGroup]="itemForm" (ngSubmit)="onSubmitForm()">
+    <fieldset>
+      <div class="row">
+        <div class="mb-3 col-4">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" id="title" class="form-control" placeholder="Title" formControlName="title">
+        </div>
+        <div class="mb-3 col-4">
+          <label for="priority" class="form-label">Priority</label>
+          <select id="priority" class="form-select" formControlName="priority">
+            <option *ngFor="let priority of priorities" value={{priority}}>{{priority}}</option>
+          </select>
+        </div>
+        <div class="mb-3 col-4">
+          <label for="state" class="form-label">State</label>
+          <select id="state" class="form-select" formControlName="state">
+            <option *ngFor="let state of states" value={{state}}>{{state}}</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button class="btn btn-warning ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#newItem" aria-expanded="false" aria-controls="newItem">
+        Cancel
+      </button>
+    </fieldset>
+  </form>
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Priority</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-warning" *ngIf="items.length === 0">
+        <td class="text-center" colspan="3">No data</td>
+      </tr>
+      <tr *ngFor="let item of items">
+        <td>{{item.title}}</td>
+        <td>{{item.priority}}</td>
+        <td>{{item.state}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+
